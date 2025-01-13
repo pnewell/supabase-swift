@@ -2,7 +2,7 @@ import Auth
 import Foundation
 import Helpers
 import PostgREST
-import Realtime
+// import Realtime
 
 #if canImport(FoundationNetworking)
   import FoundationNetworking
@@ -13,7 +13,7 @@ public struct SupabaseClientOptions: Sendable {
   public let auth: AuthOptions
   public let global: GlobalOptions
   public let functions: FunctionsOptions
-  public let realtime: RealtimeClientOptions
+  // public let realtime: RealtimeClientOptions
 
   public struct DatabaseOptions: Sendable {
     /// The Postgres schema which your tables belong to. Must be on the list of exposed schemas in
@@ -127,13 +127,13 @@ public struct SupabaseClientOptions: Sendable {
     auth: AuthOptions,
     global: GlobalOptions = .init(),
     functions: FunctionsOptions = .init(),
-    realtime: RealtimeClientOptions = .init()
+    // realtime: RealtimeClientOptions = .init()
   ) {
     self.db = db
     self.auth = auth
     self.global = global
     self.functions = functions
-    self.realtime = realtime
+    // self.realtime = realtime
   }
 }
 
@@ -143,13 +143,13 @@ extension SupabaseClientOptions {
       db: DatabaseOptions = .init(),
       global: GlobalOptions = .init(),
       functions: FunctionsOptions = .init(),
-      realtime: RealtimeClientOptions = .init()
+      // realtime: RealtimeClientOptions = .init()
     ) {
       self.db = db
       auth = .init()
       self.global = global
       self.functions = functions
-      self.realtime = realtime
+      // self.realtime = realtime
     }
   #endif
 }
