@@ -17,9 +17,9 @@ let package = Package(
     .library(name: "Auth", targets: ["Auth"]),
     .library(name: "Functions", targets: ["Functions"]),
     .library(name: "PostgREST", targets: ["PostgREST"]),
-    .library(name: "Realtime", targets: ["Realtime"]),
+    // .library(name: "Realtime", targets: ["Realtime"]),
     .library(name: "Storage", targets: ["Storage"]),
-    .library(name: "Supabase", targets: ["Supabase", "Functions", "PostgREST", "Auth", "Realtime", "Storage"]),
+    .library(name: "Supabase", targets: ["Supabase", "Functions", "PostgREST", "Auth", /*"Realtime",*/ "Storage"]),
   ],
   dependencies: [
     .package(url: "https://github.com/apple/swift-http-types.git", from: "1.3.0"),
@@ -115,25 +115,25 @@ let package = Package(
       ],
       exclude: ["__Snapshots__"]
     ),
-    .target(
-      name: "Realtime",
-      dependencies: [
-        .product(name: "ConcurrencyExtras", package: "swift-concurrency-extras"),
-        .product(name: "IssueReporting", package: "xctest-dynamic-overlay"),
-        "Helpers",
-      ]
-    ),
-    .testTarget(
-      name: "RealtimeTests",
-      dependencies: [
-        .product(name: "CustomDump", package: "swift-custom-dump"),
-        .product(name: "XCTestDynamicOverlay", package: "xctest-dynamic-overlay"),
-        .product(name: "InlineSnapshotTesting", package: "swift-snapshot-testing"),
-        "PostgREST",
-        "Realtime",
-        "TestHelpers",
-      ]
-    ),
+    // .target(
+    //   name: "Realtime",
+    //   dependencies: [
+    //     .product(name: "ConcurrencyExtras", package: "swift-concurrency-extras"),
+    //     .product(name: "IssueReporting", package: "xctest-dynamic-overlay"),
+    //     "Helpers",
+    //   ]
+    // ),
+    // .testTarget(
+    //   name: "RealtimeTests",
+    //   dependencies: [
+    //     .product(name: "CustomDump", package: "swift-custom-dump"),
+    //     .product(name: "XCTestDynamicOverlay", package: "xctest-dynamic-overlay"),
+    //     .product(name: "InlineSnapshotTesting", package: "swift-snapshot-testing"),
+    //     "PostgREST",
+    //     "Realtime",
+    //     "TestHelpers",
+    //   ]
+    // ),
     .target(
       name: "Storage",
       dependencies: [
@@ -157,7 +157,7 @@ let package = Package(
         "Auth",
         "Functions",
         "PostgREST",
-        "Realtime",
+        // "Realtime",
         "Storage",
       ]
     ),
