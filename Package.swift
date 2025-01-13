@@ -5,7 +5,7 @@ import Foundation
 import PackageDescription
 
 let package = Package(
-  name: "Supabase",
+  name: "supabase-swift",
   platforms: [
     .iOS(.v13),
     .macCatalyst(.v13),
