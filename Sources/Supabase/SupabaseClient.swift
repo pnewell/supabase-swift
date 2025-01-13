@@ -6,7 +6,7 @@ import HTTPTypes
 import Helpers
 import IssueReporting
 @_exported import PostgREST
-@_exported import Realtime
+// @_exported import Realtime
 @_exported import Storage
 
 #if canImport(FoundationNetworking)
@@ -77,7 +77,7 @@ public final class SupabaseClient: Sendable {
       return $0.storage!
     }
   }
-
+/*
   let _realtime: UncheckedSendable<RealtimeClient>
 
   /// Realtime client for Supabase
@@ -88,7 +88,7 @@ public final class SupabaseClient: Sendable {
       }
       return $0.realtime!
     }
-  }
+  }*/
 
   /// Supabase Functions allows you to deploy and invoke edge functions.
   public var functions: FunctionsClient {
@@ -120,7 +120,7 @@ public final class SupabaseClient: Sendable {
     var storage: SupabaseStorageClient?
     var rest: PostgrestClient?
     var functions: FunctionsClient?
-    var realtime: RealtimeClientV2?
+    //var realtime: RealtimeClientV2?
 
     var changedAccessToken: String?
   }
@@ -190,13 +190,13 @@ public final class SupabaseClient: Sendable {
       autoRefreshToken: options.auth.autoRefreshToken
     )
 
-    _realtime = UncheckedSendable(
+    /*_realtime = UncheckedSendable(
       RealtimeClient(
         supabaseURL.appendingPathComponent("/realtime/v1").absoluteString,
         headers: _headers.dictionary,
         params: _headers.dictionary
       )
-    )
+    )*/
 
     if options.auth.accessToken == nil {
       listenForAuthEvents()
@@ -247,7 +247,7 @@ public final class SupabaseClient: Sendable {
   public func schema(_ schema: String) -> PostgrestClient {
     rest.schema(schema)
   }
-
+/*
   /// Returns all Realtime channels.
   public var channels: [RealtimeChannelV2] {
     Array(realtimeV2.subscriptions.values)
@@ -274,7 +274,7 @@ public final class SupabaseClient: Sendable {
   public func removeAllChannels() async {
     await realtimeV2.removeAllChannels()
   }
-
+*/
   /// Handles an incoming URL received by the app.
   ///
   /// ## Usage example:
@@ -393,11 +393,11 @@ public final class SupabaseClient: Sendable {
       return nil
     }
 
-    realtime.setAuth(accessToken)
-    await realtimeV2.setAuth(accessToken)
+    //realtime.setAuth(accessToken)
+    //await realtimeV2.setAuth(accessToken)
   }
 
-  private func _initRealtimeClient() -> RealtimeClientV2 {
+  /*private func _initRealtimeClient() -> RealtimeClientV2 {
     var realtimeOptions = options.realtime
     realtimeOptions.headers.merge(with: _headers)
 
@@ -424,5 +424,5 @@ public final class SupabaseClient: Sendable {
       url: supabaseURL.appendingPathComponent("/realtime/v1"),
       options: realtimeOptions
     )
-  }
+  }*/
 }
