@@ -126,7 +126,7 @@ public struct SupabaseClientOptions: Sendable {
     db: DatabaseOptions = .init(),
     auth: AuthOptions,
     global: GlobalOptions = .init(),
-    functions: FunctionsOptions = .init(),
+    functions: FunctionsOptions = .init()//,
     // realtime: RealtimeClientOptions = .init()
   ) {
     self.db = db
@@ -142,7 +142,7 @@ extension SupabaseClientOptions {
     public init(
       db: DatabaseOptions = .init(),
       global: GlobalOptions = .init(),
-      functions: FunctionsOptions = .init(),
+      functions: FunctionsOptions = .init()//,
       // realtime: RealtimeClientOptions = .init()
     ) {
       self.db = db
